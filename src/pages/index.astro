@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Link from '../components/Link.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+
+<Layout seo={{title: "Joshua Rotimi Blog"}}>
+	<div class='h-64 flex flex-col justify-center items-start'>
+		<h1 class='text-3xl font-bold tracking-tight'>Hello, I'm Joshua Rotimi.</h1>
+		<p class='mt-2'>
+		  I'm a Web Developer / Software Engineer. I like writing code and
+		  reading the docs (not really) but I do like to know how things were built.
+		</p>
+	  </div>
+	  <div class='flex flex-col'>
+		<h2 class='text-2xl font-semibold'>Recent blog posts:</h2>
+		<ol class='mt-4 px-10 space-y-2 list-decimal'>
+			{
+			  posts.slice(0, 3).map((post) => (
+				<li>
+				  <Link class='flex justify-between' href={`/blog/${post.slug}`}>
+					{post.data.title}
+					<span class='text-gray-400'>
+					  {post.data.date.toUTCString().slice(0, -13)}
+					</span>
+				  </Link>
+				</li>
+			  ))
+			}
+		  </ol>
+	  </div>
+</Layout>
+

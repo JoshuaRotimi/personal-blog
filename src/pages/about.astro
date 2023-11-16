@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import profileImage from '../assets/Josh.jpeg';
+---
+
+<Layout seo={{title: "About Me", description: "Joshua Rotimi is a web developer based in Lagos, Nigeria"}}>
+    <div class='flex flex-col items-center gap-8 mx-auto mt-12'>
+        <Image src={profileImage} 
+            width={512}
+            height={400}
+            class='w-64 rounded-full'
+            quality='max' 
+            alt="Joshua sitting across a table"
+     />
+    <p class='p-4 text-center mt-2 flex-1 leading-7'>
+        Hey, I'm Joshua Rotimi, a web developer based in Lagos, Nigeria. I am passionate about 
+        creating visually appealing and user-friendly products. I love to code and I'm
+        always up to learn something new. I am curious, passionate and
+        constantly thinking about making code clean and better. 
+        Asides from coding, I love football, music and art.
+    </p>
+    </div>
+    
+</Layout>
